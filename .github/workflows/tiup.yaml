@@ -1,4 +1,4 @@
-name: mysql-tidb-cdc-builder
+name: tiup-image-builder
 
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -31,6 +31,6 @@ jobs:
       - name: Build sc image and push to ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: mysql-tidb-flink-cdc
+          ECR_REPOSITORY: tiup-dumpling
         run: |
-          DOCKER_BUILDKIT=1 docker buildx build --no-cache --pull -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }} -t $ECR_REGISTRY/$ECR_REPOSITORY:latest --platform linux/arm64 -f Dockerfile . --push
+          DOCKER_BUILDKIT=1 docker buildx build --no-cache --pull -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }} -t $ECR_REGISTRY/$ECR_REPOSITORY:latest --platform linux/arm64 -f Dockerfile.tipu . --push
