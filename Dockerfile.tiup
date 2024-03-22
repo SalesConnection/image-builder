@@ -5,3 +5,4 @@ RUN apt install -y curl nano mysql-client
 RUN curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
 RUN /root/.tiup/bin/tiup install dumpling
 RUN /root/.tiup/bin/tiup install tidb-lightning
+RUN /root/.tiup/bin/tiup install dm dmctl
